@@ -1,0 +1,8 @@
+{
+  "redirects": [
+    { "source": "/admin", "destination": "https://havran-vet-darwon.vercel.app/admin", "permanent": false },
+    { "source": "/admin/:path*", "destination": "https://havran-vet-darwon.vercel.app/admin/:path*", "permanent": false },
+    { "source": "/login", "destination": "https://havran-vet-darwon.vercel.app/login", "permanent": false },
+    { "source": "/rezervacia", "destination": "https://havran-vet-darwon.vercel.app/rezervacia", "permanent": false }
+  ]
+}
