@@ -125,9 +125,9 @@ h1,h2{text-wrap:balance}
 .mpanel .tl{width:100%;margin-top:16px}
 
 /* HERO */
-.hero{padding:40px var(--pad) 0;background:linear-gradient(#fff 0 0) top/100% calc(100% - var(--presah)) no-repeat,var(--plocha)}
-.hero__hlava{display:grid;gap:24px}
-.hero__perex{font-size:var(--perex);line-height:1.55;color:var(--text-2)}
+.hero{padding:40px var(--pad) 60px;background:#fff}
+.hero__mriezka{display:grid}
+.hero__perex{font-size:var(--perex);line-height:1.55;color:var(--text-2);margin-top:20px;max-width:34em}
 .hero__akcie{display:flex;flex-direction:column;gap:8px;margin-top:24px}
 .hodnotenie{display:grid;gap:6px;margin-top:24px;font-size:15px;color:var(--text-2)}
 .hodnotenie div{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px}
@@ -159,14 +159,13 @@ h1,h2{text-wrap:balance}
 @media (min-width:768px){.hero__akcie{flex-direction:row;flex-wrap:wrap}}
 @media (min-width:1024px){
   .hero{padding-top:88px}
-  .hero__hlava{grid-template-columns:repeat(12,minmax(0,1fr));align-items:end;gap:var(--medzera)}
-  .hero__hlava h1{grid-column:1/8}
-  .hero__doplnok{grid-column:9/13;padding-bottom:8px}
-  .hero__akcie{flex-direction:column;align-items:stretch}
-  .dnes{margin-top:64px;padding:40px 48px;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center;min-height:240px}
-  .dnes__hlavny{grid-column:1/4}
-  .os{grid-column:4/10;padding-top:30px}
-  .dnes__pohot{grid-column:10/13;padding-left:24px;border-left:1px solid rgba(255,255,255,.14)}
+  .hero{padding-bottom:120px}
+  .hero__mriezka{grid-template-columns:repeat(12,minmax(0,1fr));align-items:start;gap:var(--medzera)}
+  .hero__text{grid-column:1/7}
+  .hero__akcie{margin-top:32px}
+  .dnes{grid-column:8/13;margin-top:4px;padding:40px;gap:32px}
+  .os{padding-top:30px}
+  .dnes__pohot{padding-top:24px;border-top:1px solid rgba(255,255,255,.14)}
   .dnes__stav{font-size:34px}
   .dnes__tel{font-size:30px}
 }
@@ -309,22 +308,18 @@ h1,h2{text-wrap:balance}
 
 <main>
   <section class="hero" id="uvod">
-    <div class="kontajner">
-      <div class="hero__hlava">
-        <div>
-          <p class="nadtitulok"><span class="okna" aria-hidden="true"></span>Pri železničnej a autobusovej stanici</p>
-          <h1>Veterinárna ambulancia <span class="akc">v&nbsp;Topoľčanoch</span></h1>
+    <div class="kontajner hero__mriezka">
+      <div class="hero__text">
+        <p class="nadtitulok"><span class="okna" aria-hidden="true"></span>Pri železničnej a autobusovej stanici</p>
+        <h1>Veterinárna ambulancia <span class="akc">v&nbsp;Topoľčanoch</span></h1>
+        <p class="hero__perex">Ordinujeme v pracovné dni dopoludnia aj popoludní. Termín vyšetrenia si dohodnete telefonicky.</p>
+        <div class="hero__akcie">
+          <a class="tl tl--hlavne" href="tel:+421907695996"><svg class="ik"><use href="#i-tel"/></svg>Zavolať a dohodnúť termín</a>
+          <a class="tl tl--obrys" href="https://www.google.com/maps/search/?api=1&amp;query=Veterin%C3%A1rna%20ambulancia%20MVDr.%20Michal%20Havran%2C%20M.%20R%C3%A1zusa%204864%2F2%2C%20Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener"><svg class="ik"><use href="#i-pin"/></svg>Zistiť cestu</a>
         </div>
-        <div class="hero__doplnok">
-          <p class="hero__perex">Ordinujeme v pracovné dni dopoludnia aj popoludní. Termín vyšetrenia si dohodnete telefonicky.</p>
-          <div class="hero__akcie">
-            <a class="tl tl--hlavne" href="tel:+421907695996"><svg class="ik"><use href="#i-tel"/></svg>Zavolať a dohodnúť termín</a>
-            <a class="tl tl--obrys" href="https://www.google.com/maps/search/?api=1&amp;query=Veterin%C3%A1rna%20ambulancia%20MVDr.%20Michal%20Havran%2C%20M.%20R%C3%A1zusa%204864%2F2%2C%20Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener"><svg class="ik"><use href="#i-pin"/></svg>Zistiť cestu</a>
-          </div>
-          <div class="hodnotenie">
-            <div><span class="hviezdy" aria-hidden="true"><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg></span><span><b class="cislo">4,9 / 5</b> · <span class="cislo">65</span> hodnotení na Google</span></div>
-            <div><span><b class="cislo">100 %</b> odporúča · <span class="cislo">33</span> hodnotení na Facebooku</span></div>
-          </div>
+        <div class="hodnotenie">
+          <div><span class="hviezdy" aria-hidden="true"><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg></span><span><b class="cislo">4,9 / 5</b> · <span class="cislo">65</span> hodnotení na Google</span></div>
+          <div><span><b class="cislo">100 %</b> odporúča · <span class="cislo">33</span> hodnotení na Facebooku</span></div>
         </div>
       </div>
 
