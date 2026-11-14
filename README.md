@@ -1,7 +1,7 @@
 # Veterinárna ambulancia MVDr. Michal Havran — neoficiálny návrh homepage
 
-> Neoficiálny návrh — nie je to oficiálny web podniku. Ukážka od Darwon. Objednávky ani rezervácie tu nefungujú.
+Neoficiálny návrh homepage, statická stránka bez build kroku, nič sa nenačítava zo servera.
 
-Veterinárna ambulancia MVDr. Michal Havran
+Koncept: ambulancia ordinuje v dvoch „oknách“ denne (9–12 a 15–18) a zmeny hodín dnes oznamuje len na Facebooku. Stránka preto stojí na hodinách ako hlavnom objekte: karta „Dnes“ so živým stavom a časovou osou, dve veľké ordinačné okná s dnešným stavom a miesto na oznam. Dve pilulky ordinačných okien sú jediný motív.
 
-Statická stránka bez build kroku: `index.html` + `assets/`.
+Súbory: `index.html` (bez obrázkov; logo ani fotky ambulancia nemá). Zvonka sa načítava len písmo Plus Jakarta Sans z Google Fonts.

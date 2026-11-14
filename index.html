@@ -1,402 +1,484 @@
-<!doctype html><html lang="sk"><meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<!doctype html>
+<html lang="sk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Veterinárna ambulancia MVDr. Michal Havran · Topoľčany — neoficiálny návrh</title>
+<meta name="description" content="Veterinárna ambulancia MVDr. Michal Havran v Topoľčanoch, M. Rázusa 4864/2 pri železničnej a autobusovej stanici. Ordinačné hodiny Po–Pi 9:00–12:00 a 15:00–18:00, termín telefonicky. Neoficiálny návrh webu od Darwon.">
 <meta name="robots" content="noindex, nofollow">
-<title>Veterinárna ambulancia MVDr. Michal Havran · veterina v Topoľčanoch — neoficiálny návrh</title>
-<meta name="description" content="Veterinárna ambulancia v Topoľčanoch, M. Rázusa 4864/2 pri železničnej a autobusovej stanici — ordinačné hodiny, telefón a kontakt. Neoficiálny návrh webu od Darwon.">
-<meta name="theme-color" content="#ffffff">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600&family=Nunito+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400..800&display=swap" rel="stylesheet">
 <style>
+/* TOKENY — rodina C mäkká, chladný tón, vlastné hodnoty pre ambulanciu */
 :root{
-  --bg:#ffffff;
-  --mist:#f1f4f7;
-  --ink:#18222f;
-  --muted:#525d6b;
-  --line:rgba(24,34,47,.14);
-  --line-strong:rgba(24,34,47,.28);
-  --accent:#1d3557;
-  --accent-dark:#132640;
-  --off:#97a0ab;
-  --serif:"Lora",Georgia,"Times New Roman",serif;
-  --sans:"Nunito Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
-  --gut:40px;
+  --kontajner:1280px;            /* okno 1440: 80 px vzduchu z každej strany */
+  --pad:24px;                    /* mobil 24, od 768 px 32 */
+  --medzera:24px;                /* stĺpec 85,3 px */
+  --rytmus:60px;                 /* desktop 120 */
+  --hlavicka:64px;               /* desktop 84 */
+  --presah:72px;                 /* karta hero cez hranu; desktop 120 */
+  --h1:42px; --h2:32px; --h3:20px; --perex:17px; --text:15px;
+  --text-farba:#1D3557;          /* tmavomodrá: text aj tmavá plocha */
+  --text-2:#5B6B82;
+  --akcent:#F0A050;              /* marhuľová: tlačidlá, okná hodín, hviezdy */
+  --akcent-hover:#E48D35;
+  --akcent-text:#B4561C;         /* ten istý akcent pre text na svetlom */
+  --plocha:#EBF1F7;              /* svetlá chladná plocha */
+  --tmava:#1D3557;
+  --obrys:#D9E2EC;
+  --r-karta:24px; --r-blok:24px; --r-maly:12px;
+  --tien:0 16px 40px rgba(29,53,87,.12);   /* jediný tieň */
 }
+@media (min-width:768px){:root{--pad:32px;--h1:54px;--h2:40px;--text:16px}}
+@media (min-width:1024px){:root{--rytmus:120px;--hlavicka:84px;--presah:120px;--h1:68px;--h2:48px;--h3:24px;--perex:20px;--r-blok:32px}}
+
 *,*::before,*::after{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.6 var(--sans);-webkit-font-smoothing:antialiased}
-img{max-width:100%;height:auto;display:block}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+body{margin:0;font-family:'Plus Jakarta Sans',system-ui,sans-serif;font-size:var(--text);line-height:1.55;color:var(--text-farba);background:#fff;overflow-x:clip;-webkit-font-smoothing:antialiased}
 a{color:inherit}
-h1,h2,h3{font-family:var(--serif);font-weight:500;margin:0;letter-spacing:-.01em}
-p{margin:0}
-.num{font-variant-numeric:tabular-nums lining-nums}
-a.num,.big.num{white-space:nowrap}
-.wrap{max-width:1200px;margin:0 auto;padding:0 var(--gut)}
-.label{font:700 12px/1.3 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
-.ul{text-decoration:none;background:linear-gradient(currentColor,currentColor) 0 100%/0 1px no-repeat;transition:background-size .2s ease}
-.ul:hover{background-size:100% 1px}
-:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+h1,h2,h3,p{margin:0}
+h1,h2,h3{font-weight:700;letter-spacing:-.025em}
+h1{font-size:var(--h1);line-height:1.04;letter-spacing:-.03em;font-weight:800}
+h2{font-size:var(--h2);line-height:1.1}
+h3{font-size:var(--h3);line-height:1.25;letter-spacing:-.015em}
+h1,h2{text-wrap:balance}
+.akc{color:var(--akcent-text)}
+.tmava .akc{color:var(--akcent)}
+.cislo{font-variant-numeric:tabular-nums;white-space:nowrap}
+.dv{font-variant-numeric:normal}
+:focus-visible{outline:2px solid var(--akcent-text);outline-offset:3px}
+[id]{scroll-margin-top:calc(var(--hlavicka) + 12px)}
+.ik{width:20px;height:20px;flex:none;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 
-/* pruh */
-.notice{background:var(--mist);border-bottom:1px solid var(--line);font-size:13px;line-height:1.45;color:var(--muted)}
-.notice .wrap{padding-top:9px;padding-bottom:9px}
+.sekcia{position:relative;padding:calc(var(--rytmus)/2) var(--pad)}
+.sekcia--plocha{background:var(--plocha);padding-block:var(--rytmus)}
+.kontajner{max-width:var(--kontajner);margin-inline:auto}
+.mriezka{display:grid;gap:var(--medzera)}
+@media (min-width:1024px){.mriezka{grid-template-columns:repeat(12,minmax(0,1fr))}}
 
-/* hlavička */
-.head{border-bottom:1px solid var(--line)}
-.head .wrap{display:flex;align-items:center;justify-content:space-between;gap:24px;min-height:84px}
-.brand{text-decoration:none;display:block}
-.brand small{display:block;font:700 11px/1.2 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:4px}
-.brand strong{display:block;font:600 21px/1.2 var(--serif);color:var(--ink)}
-.nav{display:flex;align-items:center;gap:32px;font-size:15px;font-weight:600}
-.nav a{text-decoration:none;padding:12px 0}
-.nav .tel{font-weight:700;color:var(--accent)}
-.btn{display:inline-flex;align-items:center;justify-content:center;min-height:48px;padding:0 24px;border-radius:3px;font:700 15px/1.2 var(--sans);text-decoration:none;transition:background-color .2s ease,border-color .2s ease,color .2s ease}
-.btn-p{background:var(--accent);color:#fff;border:1px solid var(--accent)}
-.btn-p:hover{background:var(--accent-dark);border-color:var(--accent-dark)}
-.btn-s{background:transparent;color:var(--accent);border:1px solid var(--line-strong)}
-.btn-s:hover{border-color:var(--accent)}
-.nav .btn{padding:0 20px;min-height:44px}
+/* motív: dve ordinačné okná (dopoludnia, popoludní) */
+.okna{display:inline-flex;gap:4px;flex:none}
+.okna::before,.okna::after{content:"";width:12px;height:6px;border-radius:9px;background:var(--akcent)}
+.nadtitulok{display:inline-flex;align-items:center;gap:10px;font-size:14px;font-weight:700;color:var(--akcent-text);margin-bottom:16px;white-space:nowrap}
+.tmava .nadtitulok{color:var(--akcent)}
+@media (min-width:1024px){.nadtitulok{margin-bottom:20px;font-size:15px}}
 
-/* hero */
-.hero .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px;padding-top:72px;padding-bottom:72px;align-items:start}
-.hero-text{grid-column:1 / span 7;padding-right:24px}
-.hero h1{font-size:clamp(38px,5vw,62px);line-height:1.08;margin:16px 0 24px;max-width:14ch;text-wrap:balance}
-.lead{font-size:19px;line-height:1.6;color:var(--muted);max-width:34em}
-.facts{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin:40px 0 0;padding:24px 0 0;border-top:1px solid var(--line)}
-.facts dt{margin-bottom:8px}
-.facts dd{margin:0}
-.addr{font:500 22px/1.35 var(--serif)}
-.phone{font:700 30px/1.15 var(--sans);color:var(--accent);text-decoration:none;letter-spacing:.005em}
-.facts .sub{display:block;font-size:15px;color:var(--muted);margin-top:6px}
-.actions{display:flex;flex-wrap:wrap;gap:16px;margin-top:40px}
+/* tlačidlá: pilulky */
+.tl{display:inline-flex;align-items:center;justify-content:center;gap:8px;height:52px;padding:0 24px;border-radius:999px;border:1.5px solid transparent;font:inherit;font-size:16px;font-weight:700;text-decoration:none;white-space:nowrap;cursor:pointer;transition:background-color .15s,border-color .15s,color .15s}
+.tl--hlavne{background:var(--akcent);color:var(--text-farba)}
+.tl--hlavne:hover{background:var(--akcent-hover)}
+.tl--obrys{border-color:var(--text-farba);color:var(--text-farba);background:transparent}
+.tl--obrys:hover{background:var(--plocha)}
+.tl--tmave{background:var(--tmava);color:#fff}
+.tl--tmave:hover{background:#13253D}
+.tmava .tl--obrys{border-color:rgba(255,255,255,.4);color:#fff}
+.tmava .tl--obrys:hover{background:rgba(255,255,255,.08)}
+.odkaz{display:inline-flex;align-items:center;gap:6px;font-weight:700;color:var(--akcent-text);text-decoration:none;white-space:nowrap}
+.odkaz .ik{width:18px;height:18px;transition:transform .15s}
+.odkaz:hover .ik{transform:translate(2px,-2px)}
 
-/* hodiny */
-.hours{grid-column:8 / span 5;background:var(--mist);border:1px solid var(--line);border-radius:4px;padding:32px 32px 28px}
-.hours h2{font-size:26px;line-height:1.2}
-.status{display:flex;align-items:center;gap:10px;margin:16px 0 24px;padding:12px 16px;background:#fff;border:1px solid var(--line);border-radius:3px;font-size:15px;line-height:1.4;min-height:48px}
-.status b{font-weight:700}
-#statusDot{flex:none;width:10px;height:10px;border-radius:999px;background:var(--off)}
-#statusDot.is-open{background:var(--accent);box-shadow:0 0 0 4px rgba(29,53,87,.16)}
-#statusDot.is-closing{background:var(--accent);box-shadow:0 0 0 4px rgba(29,53,87,.10)}
-table{width:100%;border-collapse:collapse}
-.tbl th,.tbl td{padding:11px 0;border-bottom:1px solid var(--line);text-align:left;font-size:16px;vertical-align:baseline}
-.tbl thead th{font:700 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);padding-top:0;padding-bottom:10px;border-bottom:1px solid var(--line-strong)}
-.tbl td{text-align:right;font-variant-numeric:tabular-nums lining-nums;white-space:nowrap}
-.tbl thead th:not(:first-child){text-align:right}
-.tbl tbody th{font-weight:600}
-.tbl .closed td{color:var(--off)}
-.tbl tr[data-today] th,.tbl tr[data-today] td{font-weight:700;color:var(--accent)}
-.tbl tr[data-today] th::after{content:"dnes";margin-left:10px;font:700 11px/1 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--accent);vertical-align:2px}
-.hours .note{margin-top:20px;font-size:15px;line-height:1.55}
-.hours .note a{font-weight:700;color:var(--accent)}
-.hours .src{margin-top:12px;font-size:13px;color:var(--muted)}
+.stav{display:inline-flex;align-items:center;gap:8px;font-weight:700;white-space:nowrap}
+.bodka{width:10px;height:10px;border-radius:50%;background:#9AA6B6;flex:none}
+.je-otvorene .bodka{background:#2FA36B;box-shadow:0 0 0 4px rgba(47,163,107,.2)}
 
-/* pás faktov */
-.band{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.band .wrap{display:grid;grid-template-columns:repeat(3,1fr)}
-.band .cell{padding:32px 32px 32px 0}
-.band .cell + .cell{padding-left:32px;border-left:1px solid var(--line)}
-.band .big{margin:0;font:500 40px/1.1 var(--serif);font-variant-numeric:lining-nums;color:var(--ink)}
-.band .big small{font:600 17px/1 var(--sans);color:var(--muted);margin-left:4px}
-.band p{margin-top:8px;font-size:15px;color:var(--muted)}
+/* PRUH */
+.pruh{background:#13253D;color:#C8D3E1;font-size:13px;line-height:1.4;text-align:center;padding:9px var(--pad)}
 
-/* sekcie */
-.sec{padding:104px 0}
-.sec .wrap{display:grid;grid-template-columns:repeat(12,1fr);column-gap:24px}
-.sec-head{grid-column:1 / span 4;padding-right:24px}
-.sec-body{grid-column:6 / span 7}
-.sec h2{font-size:clamp(30px,3.4vw,42px);line-height:1.15;margin-top:16px}
-.sec-head .aside{margin-top:24px;font-size:15px;color:var(--muted)}
-.pill{display:inline-block;padding:4px 10px;border:1px solid var(--line-strong);border-radius:999px;font:700 11px/1.3 var(--sans);letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
-
-.memo{border-top:1px solid var(--line-strong);padding-top:24px}
-.memo h3{font-size:26px;line-height:1.25;margin:16px 0 12px}
-.memo p{color:var(--muted);max-width:36em}
-.memo p + p{margin-top:12px}
-
-.care{background:var(--mist)}
-.list{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
-.item{border-top:1px solid var(--line-strong);padding:24px 0 40px}
-.item h3{font-size:23px;line-height:1.25;margin-bottom:10px}
-.item p{color:var(--muted);font-size:16px}
-.item a{font-weight:700;color:var(--accent);white-space:nowrap}
-
-.contact-grid{display:grid;grid-template-columns:1fr 1fr;column-gap:40px}
-.contact-grid > div{display:flex;flex-direction:column;align-items:flex-start;border-top:1px solid var(--line-strong);padding-top:24px}
-.contact .addr{font-size:26px;margin-top:12px}
-.contact .phone{display:inline-block;margin-top:12px}
-.contact p.muted{color:var(--muted);margin-top:8px;font-size:16px}
-.contact .actions{margin-top:auto;padding-top:32px}
-.mini{margin-top:24px;font-size:16px}
-.mini span{color:var(--muted)}
-
-/* pätička */
-.foot{border-top:1px solid var(--line);background:var(--mist)}
-.foot .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px 40px;padding-top:40px;padding-bottom:40px;font-size:15px;color:var(--muted)}
-.foot strong{display:block;font:600 18px/1.3 var(--serif);color:var(--ink);margin-bottom:4px}
-.foot .made{align-self:flex-end}
-
-/* mobilná lišta */
-.mbar{display:none}
-
-@media (max-width:1060px){
-  .hero-text{grid-column:1 / span 12;padding-right:0}
-  .hours{grid-column:1 / span 12;margin-top:56px;max-width:620px}
-  .sec-head{grid-column:1 / span 12;padding-right:0;margin-bottom:40px}
-  .sec-body{grid-column:1 / span 12}
-  .nav .hide-md{display:none}
+/* HLAVIČKA */
+.hlavicka{position:sticky;top:0;z-index:40;background:#fff;padding-inline:var(--pad);border-bottom:1px solid var(--obrys);transition:box-shadow .2s,border-color .2s}
+.hlavicka.je-prilepena{box-shadow:var(--tien);border-color:transparent}
+.hlavicka__riadok{height:var(--hlavicka);display:flex;align-items:center;gap:16px}
+.znacka{display:flex;align-items:center;gap:12px;text-decoration:none;min-width:0}
+.znacka .okna::before,.znacka .okna::after{width:14px;height:8px}
+.znacka b{display:block;font-size:15px;font-weight:800;letter-spacing:-.01em;line-height:1.15}
+.znacka small{display:block;font-size:12px;color:var(--text-2);font-weight:600;line-height:1.3}
+.menu{display:none;gap:32px;margin-left:auto}
+.menu a{font-size:15px;font-weight:600;text-decoration:none;padding:6px 0;border-bottom:2px solid transparent;transition:border-color .15s}
+.menu a:hover{border-bottom-color:var(--akcent)}
+.hlavicka__akcie{margin-left:auto;display:flex;align-items:center;gap:8px;flex:none}
+.hlavicka__tel{display:none;font-size:15px;text-decoration:none}
+.hlavicka .tl{height:40px;padding:0 16px;font-size:14px}
+.len-d{display:none}
+.hlavicka .tl{width:40px;padding:0}
+.znacka b{white-space:nowrap}
+.burger{width:40px;height:40px;border-radius:50%;border:1.5px solid var(--obrys);background:#fff;display:grid;place-items:center;cursor:pointer;padding:0}
+.burger span,.burger span::before,.burger span::after{display:block;width:16px;height:2px;border-radius:2px;background:var(--text-farba);position:relative;content:""}
+.burger span::before{position:absolute;top:-5px}.burger span::after{position:absolute;top:5px}
+@media (min-width:1024px){
+  .znacka b{font-size:17px}.znacka small{font-size:13px}
+  .menu{display:flex}
+  .hlavicka__akcie{margin-left:40px;gap:24px}
+  .hlavicka__tel{display:inline-flex}
+  .hlavicka .tl{height:48px;width:auto;padding:0 22px;font-size:15px}
+  .len-d{display:inline}
+  .burger{display:none}
 }
-@media (max-width:760px){
-  :root{--gut:20px}
-  body{font-size:16px;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
-  .head .wrap{min-height:68px}
-  .brand strong{font-size:18px}
-  .nav a:not(.tel){display:none}
-  .nav .tel{font-size:15px;padding:12px 0}
-  .hero .wrap{padding-top:40px;padding-bottom:56px}
-  .hero h1{margin:12px 0 16px}
-  .lead{font-size:17px}
-  .facts{grid-template-columns:1fr;gap:20px;margin-top:32px}
-  .addr{font-size:20px}
-  .phone{font-size:28px}
-  .actions{margin-top:32px}
-  .actions .btn{flex:1 1 100%}
-  .hours{margin-top:40px;padding:24px 20px 20px}
-  .tbl th,.tbl td{font-size:15px}
-  .tbl tr[data-today] th::after{margin-left:6px}
-  .band .wrap{grid-template-columns:1fr}
-  .band .cell,.band .cell + .cell{padding:24px 0;border-left:0}
-  .band .cell + .cell{border-top:1px solid var(--line)}
-  .band .big{font-size:34px}
-  .sec{padding:72px 0}
-  .sec-head{margin-bottom:32px}
-  .list,.contact-grid{grid-template-columns:1fr}
-  .item{padding:20px 0 32px}
-  .contact-grid > div + div{margin-top:40px}
-  .contact .addr{font-size:22px}
-  .mbar{display:grid;grid-template-columns:1fr 1fr;gap:8px;position:fixed;left:0;right:0;bottom:0;z-index:20;background:#fff;border-top:1px solid var(--line);padding:10px 16px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -4px 16px rgba(24,34,47,.06)}
-  .mbar .btn{min-height:48px;padding:0 12px}
+.mpanel{position:fixed;inset:0;z-index:60;display:none}
+.mpanel.je-otvoreny{display:block}
+.mpanel__clona{position:absolute;inset:0;background:rgba(0,0,0,.3);border:0;width:100%;cursor:pointer}
+.mpanel__obsah{position:absolute;top:12px;left:12px;right:12px;background:#fff;border-radius:var(--r-karta);padding:20px 24px 24px;box-shadow:var(--tien)}
+.mpanel__zavriet{float:right;font:inherit;font-size:14px;font-weight:700;background:var(--plocha);border:0;border-radius:999px;height:36px;padding:0 14px;cursor:pointer;color:var(--text-farba)}
+.mpanel nav{clear:both;padding-top:8px}
+.mpanel nav a{display:block;padding:12px 0;font-size:22px;font-weight:700;text-decoration:none;letter-spacing:-.01em}
+.mpanel .tl{width:100%;margin-top:16px}
+
+/* HERO */
+.hero{padding:40px var(--pad) 0;background:linear-gradient(#fff 0 0) top/100% calc(100% - var(--presah)) no-repeat,var(--plocha)}
+.hero__hlava{display:grid;gap:24px}
+.hero__perex{font-size:var(--perex);line-height:1.55;color:var(--text-2)}
+.hero__akcie{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.hodnotenie{display:grid;gap:6px;margin-top:24px;font-size:15px;color:var(--text-2)}
+.hodnotenie div{display:flex;align-items:center;flex-wrap:wrap;gap:6px 10px}
+.hviezdy{display:flex;gap:2px;color:var(--akcent)}
+.hviezdy svg{width:20px;height:20px;fill:currentColor}
+.hodnotenie b{color:var(--text-farba);font-weight:800}
+.dnes{position:relative;margin-top:40px;background:var(--tmava);color:#fff;border-radius:var(--r-blok);padding:24px;display:grid;gap:28px;overflow:hidden;isolation:isolate}
+.dnes__stitok{font-size:13px;font-weight:700;color:#A9B8CC;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.dnes__stav{display:flex;gap:12px;font-size:30px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-top:12px}
+.dnes__stav .bodka{width:12px;height:12px}
+.dnes__pod{color:#A9B8CC;margin-top:6px}
+.os{position:relative;padding-top:26px}
+.os__drahy{position:relative;height:44px;border-radius:999px;background:rgba(255,255,255,.07)}
+.os__okno{position:absolute;top:6px;bottom:6px;border-radius:999px;background:var(--akcent)}
+.os__okno--1{left:9.09%;width:27.27%}.os__okno--2{left:63.64%;width:27.27%}
+.os__volno{position:absolute;inset:0;display:none;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#A9B8CC}
+.je-zatvorene-den .os__okno{display:none}
+.je-zatvorene-den .os__volno{display:flex}
+.os__popis{position:relative;height:20px;margin-top:10px;font-size:13px;color:#A9B8CC}
+.os__popis>span{position:absolute;transform:translateX(-50%)}
+.os__teraz{position:absolute;top:0;bottom:30px;width:2px;background:#fff;border-radius:2px;display:none}
+.os__teraz::before{content:"teraz";position:absolute;top:0;left:50%;transform:translateX(-50%);font-size:12px;font-weight:800;line-height:1;background:var(--tmava);padding:0 4px}
+.os__teraz::after{content:"";position:absolute;bottom:-4px;left:-3px;width:8px;height:8px;border-radius:50%;background:#fff}
+.dnes__pohot{display:grid;gap:4px}
+.dnes__pohot p{color:#A9B8CC;font-size:14px}
+.dnes__tel{font-size:28px;font-weight:800;letter-spacing:-.02em;text-decoration:none;line-height:1.1}
+.dnes__tel:hover{color:var(--akcent)}
+.dnes .tl{margin-top:12px;justify-self:start}
+@media (min-width:768px){.hero__akcie{flex-direction:row;flex-wrap:wrap}}
+@media (min-width:1024px){
+  .hero{padding-top:88px}
+  .hero__hlava{grid-template-columns:repeat(12,minmax(0,1fr));align-items:end;gap:var(--medzera)}
+  .hero__hlava h1{grid-column:1/8}
+  .hero__doplnok{grid-column:9/13;padding-bottom:8px}
+  .hero__akcie{flex-direction:column;align-items:stretch}
+  .dnes{margin-top:64px;padding:40px 48px;grid-template-columns:repeat(12,minmax(0,1fr));gap:24px;align-items:center;min-height:240px}
+  .dnes__hlavny{grid-column:1/4}
+  .os{grid-column:4/10;padding-top:30px}
+  .dnes__pohot{grid-column:10/13;padding-left:24px;border-left:1px solid rgba(255,255,255,.14)}
+  .dnes__stav{font-size:34px}
+  .dnes__tel{font-size:30px}
 }
-@media (max-width:380px){
-  .brand small{letter-spacing:.1em}
-  .nav .tel{font-size:14px}
+
+/* ORDINAČNÉ HODINY (šité na mieru) */
+.hodiny__text p{color:var(--text-2);margin-top:16px;max-width:30em}
+.hodiny__text p b{color:var(--text-farba)}
+.oznam{margin-top:28px;background:#fff;border-radius:var(--r-karta);padding:20px 24px;display:grid;gap:6px;border:1.5px dashed #B9C7D8}
+.oznam__hlava{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:800}
+.oznam__hlava .okna::before,.oznam__hlava .okna::after{width:10px;height:6px}
+.oznam__ukazka{margin-left:auto;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--text-2);background:var(--plocha);border-radius:999px;padding:3px 9px}
+.oznam p{font-size:15px;color:var(--text-2);max-width:none;margin:0}
+.okna-blok{margin-top:32px}
+.okno{position:relative;display:flex;flex-direction:column;gap:2px;background:#fff;border:2px solid transparent;border-radius:999px;padding:22px 32px;transition:background-color .15s}
+.okno__popis{display:flex;flex-wrap:wrap;white-space:nowrap;align-items:center;gap:6px 10px;font-size:13px;font-weight:700;color:var(--text-2)}
+.okno__cas{font-size:44px;font-weight:800;letter-spacing:-.035em;line-height:1.05}
+.okno__znak{display:none;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;border-radius:999px;padding:3px 9px;background:var(--tmava);color:#fff}
+.okno.je-teraz{background:var(--akcent)}
+.okno.je-teraz .okno__popis{color:var(--text-farba)}
+.okno.je-dalsie{border-color:var(--akcent)}
+.okno.je-teraz .okno__znak,.okno.je-dalsie .okno__znak{display:inline-block}
+.okno.je-dalsie .okno__znak{background:var(--plocha);color:var(--akcent-text)}
+.prestavka{display:flex;align-items:center;gap:12px;padding:12px 32px;font-size:14px;font-weight:600;color:var(--text-2)}
+.prestavka::before{content:"";width:2px;height:28px;border-radius:2px;background:#C3D0DF}
+.mimo{display:grid;gap:8px;margin-top:20px;padding:18px 24px;border-radius:var(--r-karta);background:#fff;font-size:15px;color:var(--text-2)}
+.mimo b{color:var(--text-farba)}
+.mimo.je-dnes{box-shadow:inset 0 0 0 2px var(--akcent)}
+.mimo__dnes{display:none;margin-left:8px;font-size:11px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--akcent-text)}
+.mimo.je-dnes .mimo__dnes{display:inline}
+.zdroj{font-size:13px;color:var(--text-2);margin-top:12px;padding-left:24px}
+@media (min-width:1024px){
+  .hodiny__text{grid-column:1/5;align-self:start}
+  .okna-blok{grid-column:6/13;margin-top:0}
+  .okno{flex-direction:row;align-items:center;justify-content:space-between;gap:24px;padding:28px 48px}
+  .okno__popis{flex-direction:column;align-items:flex-start;gap:8px;font-size:15px}
+  .okno__cas{font-size:76px}
+  .prestavka{padding-left:48px}
+  .mimo{grid-template-columns:1fr 1fr;padding:22px 32px;margin-top:24px}
+  .zdroj{padding-left:32px}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* STAROSTLIVOSŤ */
+.starost__text p{color:var(--text-2);margin-top:16px;max-width:30em}
+.ukazka{display:inline-block;margin-top:20px;font-size:13px;font-weight:600;color:var(--text-2);background:var(--plocha);border-radius:var(--r-maly);padding:10px 14px;max-width:26em}
+.starost__mriezka{display:flex;gap:12px;margin:32px calc(var(--pad)*-1) 0;padding:0 var(--pad) 4px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-padding-inline:var(--pad);scrollbar-width:none}
+.starost__mriezka::-webkit-scrollbar{display:none}
+.starost__mriezka>.pk{flex:none;width:272px;scroll-snap-align:start}
+.pk{background:var(--plocha);border-radius:var(--r-karta);padding:24px;display:grid;gap:8px;align-content:start}
+.pk p{color:var(--text-2)}
+.pk--hlavna{background:var(--akcent);padding:28px 24px;align-content:space-between;gap:20px}
+.pk--hlavna p{color:var(--text-farba)}
+.pk__tel{display:block;font-size:30px;font-weight:800;letter-spacing:-.02em;text-decoration:none;line-height:1.1}
+.pk--hlavna .tl{margin-top:16px;width:100%}
+@media (min-width:1024px){
+  .starost__text{grid-column:1/6}
+  .starost__mriezka{grid-column:6/13;margin:0;padding:0;overflow:visible;display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:var(--medzera)}
+  .starost__mriezka>.pk{width:auto}
+  .pk{grid-column:1/5;padding:28px 32px}
+  .pk:nth-child(2){grid-row:1}.pk:nth-child(3){grid-row:2}.pk:nth-child(4){grid-row:3}
+  .pk--hlavna{grid-column:5/8;grid-row:1/4;padding:32px}
+  .pk__tel{font-size:32px}
+}
+
+/* KONTAKT: blok cez hranu do pätičky */
+.kontakt{padding-bottom:0;background:linear-gradient(#fff 0 0) top/100% calc(100% - 96px) no-repeat,var(--tmava)}
+.kblok{position:relative;background:var(--plocha);border-radius:var(--r-blok);padding:28px 20px;display:grid;grid-template-columns:minmax(0,1fr);gap:28px;overflow:hidden;isolation:isolate}
+.kblok__adresa{font-size:26px;font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-top:20px}
+.kblok__poloha{color:var(--text-2);margin-top:8px}
+.kblok__akcie{display:flex;flex-direction:column;gap:8px;margin-top:24px}
+.tel-karta{background:#fff;border-radius:var(--r-karta);padding:24px 20px;display:grid;grid-template-columns:minmax(0,1fr);gap:4px;align-content:start}
+.tel-karta small{font-size:13px;color:var(--text-2);font-weight:600}
+.tel-karta a.cislo{font-size:32px;font-weight:800;letter-spacing:-.02em;text-decoration:none;line-height:1.15}
+.tel-karta .tl{margin-top:16px;width:100%}
+.tel-karta ul{list-style:none;margin:20px 0 0;padding:16px 0 0;border-top:1px solid var(--obrys);display:grid;gap:6px;font-size:15px}
+.tel-karta li{display:flex;flex-wrap:wrap;justify-content:space-between;gap:0 12px}
+.tel-karta li span:last-child{color:var(--text-2)}
+@media (min-width:768px){.kblok__akcie{flex-direction:row;flex-wrap:wrap}}
+@media (min-width:1024px){
+  .kontakt{background:linear-gradient(#fff 0 0) top/100% calc(100% - 120px) no-repeat,var(--tmava)}
+  .kblok{grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--medzera);padding:64px 56px}
+  .kblok__lavy{grid-column:1/7}
+  .kblok__adresa{font-size:40px}
+  .tel-karta{grid-column:8/13;padding:32px}
+}
+
+/* PÄTIČKA */
+.paticka{background:var(--tmava);color:#C8D3E1;padding:56px var(--pad) 104px;position:relative;overflow:hidden}
+.paticka .znacka{color:#fff}
+.paticka .znacka small{color:#A9B8CC}
+.paticka__stlpce{display:grid;gap:28px;margin-top:36px}
+.paticka h3{font-size:13px;font-weight:700;letter-spacing:0;color:#8C9DB4;margin-bottom:10px}
+.paticka ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.paticka a{text-decoration:none;color:#fff}
+.paticka a:hover{color:var(--akcent)}
+.paticka__spodok{position:relative;display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 24px;border-top:1px solid rgba(255,255,255,.14);margin-top:48px;padding-top:20px;font-size:13px;color:#8C9DB4}
+@media (min-width:1024px){
+  .paticka{padding-top:96px;padding-bottom:40px}
+  .paticka__horny{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:var(--medzera);position:relative}
+  .paticka__znacka{grid-column:1/5}
+  .paticka__stlpce{grid-column:6/13;grid-template-columns:repeat(3,1fr);margin-top:0}
+}
+
+/* MOBILNÁ LIŠTA */
+.lista{position:fixed;left:0;right:0;bottom:0;z-index:50;background:#fff;box-shadow:var(--tien);padding:10px var(--pad) calc(10px + env(safe-area-inset-bottom));display:flex;gap:8px}
+.lista .tl{flex:1;height:52px;padding:0 12px}
+.lista .tl--hlavne{flex:1.35}
+@media (min-width:1024px){.lista{display:none}}
 </style>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-tel" viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><path d="M12 21s-7-6.2-7-11.5A7 7 0 0 1 19 9.5C19 14.8 12 21 12 21z"/><circle cx="12" cy="9.5" r="2.5"/></symbol>
+  <symbol id="i-von" viewBox="0 0 24 24"><path d="M7 17L17 7M9 7h8v8"/></symbol>
+  <symbol id="i-hv" viewBox="0 0 24 24"><path d="M12 2.8l2.8 5.9 6.4.8-4.7 4.4 1.2 6.3L12 17.1l-5.7 3.1 1.2-6.3-4.7-4.4 6.4-.8z"/></symbol>
+</svg>
 
-<div class="notice"><div class="wrap">Neoficiálny návrh — nie je to oficiálny web podniku · ukážka od Darwon, objednávky ani rezervácie tu nefungujú</div></div>
+<div class="pruh">Neoficiálny návrh — nie je to oficiálny web podniku · ukážka od Darwon, objednávky ani rezervácie tu nefungujú</div>
 
-<header class="head">
-  <div class="wrap">
-    <a class="brand" href="#top" aria-label="Veterinárna ambulancia MVDr. Michal Havran — úvod">
-      <small>Veterinárna ambulancia</small>
-      <strong>MVDr. Michal Havran</strong>
-    </a>
-    <nav class="nav" aria-label="Hlavná navigácia">
-      <a class="ul" href="#hodiny">Ordinačné hodiny</a>
-      <a class="ul" href="#starostlivost">Starostlivosť</a>
-      <a class="ul" href="#kontakt">Kontakt</a>
-      <a class="tel num ul" href="tel:+421907695996">0907 695 996</a>
-      <a class="btn btn-p hide-md" href="tel:+421907695996">Zavolať</a>
-    </nav>
+<header class="hlavicka" id="hlavicka">
+  <div class="kontajner hlavicka__riadok">
+    <a class="znacka" href="#uvod" aria-label="Veterinárna ambulancia MVDr. Michal Havran — na začiatok"><span class="okna" aria-hidden="true"></span><span><b>Veterinárna ambulancia</b><small>MVDr. Michal Havran<span class="len-d"> · Topoľčany</span></small></span></a>
+    <nav class="menu" aria-label="Hlavná navigácia"><a href="#hodiny">Ordinačné hodiny</a><a href="#starostlivost">Starostlivosť</a><a href="#kontakt">Kontakt</a></nav>
+    <div class="hlavicka__akcie">
+      <a class="hlavicka__tel stav cislo" data-stav-bodka href="tel:+421907695996"><span class="bodka"></span>0907 695 996</a>
+      <a class="tl tl--hlavne" href="tel:+421907695996" aria-label="Zavolať 0907 695 996"><svg class="ik"><use href="#i-tel"/></svg><span class="len-d">Zavolať</span></a>
+      <button class="burger" type="button" aria-label="Otvoriť menu" aria-expanded="false" aria-controls="mpanel"><span></span></button>
+    </div>
   </div>
 </header>
 
-<main id="top">
-  <section class="hero" aria-labelledby="h1">
-    <div class="wrap">
-      <div class="hero-text">
-        <p class="label">Topoľčany · pri železničnej a autobusovej stanici</p>
-        <h1 id="h1">Veterinárna ambulancia v&nbsp;Topoľčanoch</h1>
-        <p class="lead">Ordinujeme v pracovné dni dopoludnia aj popoludní. Termín vyšetrenia si dohodnete telefonicky.</p>
-        <dl class="facts">
-          <div>
-            <dt class="label">Adresa</dt>
-            <dd class="addr">M. Rázusa 4864/2<br>955 01 Topoľčany</dd>
-          </div>
-          <div>
-            <dt class="label">Telefón</dt>
-            <dd><a class="phone num" href="tel:+421907695996">0907 695 996</a><span class="sub">Po–Pi v ordinačných hodinách</span></dd>
-          </div>
-        </dl>
-        <div class="actions">
-          <a class="btn btn-p" href="tel:+421907695996">Zavolať a dohodnúť termín</a>
-          <a class="btn btn-s" href="https://www.google.com/maps/search/Veterin%C3%A1rna+ambulancia+Havran+Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener">Zistiť cestu</a>
-        </div>
-      </div>
+<div class="mpanel" id="mpanel">
+  <button class="mpanel__clona" type="button" aria-label="Zavrieť menu" data-zavriet></button>
+  <div class="mpanel__obsah" role="dialog" aria-label="Menu">
+    <button class="mpanel__zavriet" type="button" data-zavriet>Zavrieť</button>
+    <nav aria-label="Mobilná navigácia"><a href="#hodiny" data-zavriet>Ordinačné hodiny</a><a href="#starostlivost" data-zavriet>Starostlivosť</a><a href="#kontakt" data-zavriet>Kontakt</a></nav>
+    <a class="tl tl--hlavne" href="tel:+421907695996"><svg class="ik"><use href="#i-tel"/></svg>Zavolať 0907 695 996</a>
+  </div>
+</div>
 
-      <aside class="hours" id="hodiny" aria-labelledby="hodiny-h">
-        <h2 id="hodiny-h">Ordinačné hodiny</h2>
-        <p class="status" role="status"><span id="statusDot" aria-hidden="true"></span><span id="statusText">Po–Pi 9:00–12:00 a 15:00–18:00</span></p>
-        <table class="tbl">
-          <thead><tr><th scope="col">Deň</th><th scope="col">Dopoludnia</th><th scope="col">Popoludní</th></tr></thead>
-          <tbody>
-            <tr data-day="1"><th scope="row">Pondelok</th><td>9:00–12:00</td><td>15:00–18:00</td></tr>
-            <tr data-day="2"><th scope="row">Utorok</th><td>9:00–12:00</td><td>15:00–18:00</td></tr>
-            <tr data-day="3"><th scope="row">Streda</th><td>9:00–12:00</td><td>15:00–18:00</td></tr>
-            <tr data-day="4"><th scope="row">Štvrtok</th><td>9:00–12:00</td><td>15:00–18:00</td></tr>
-            <tr data-day="5"><th scope="row">Piatok</th><td>9:00–12:00</td><td>15:00–18:00</td></tr>
-            <tr data-day="6" class="closed"><th scope="row">Sobota</th><td colspan="2">zatvorené</td></tr>
-            <tr data-day="0" class="closed"><th scope="row">Nedeľa</th><td colspan="2">zatvorené</td></tr>
-          </tbody>
-        </table>
-        <p class="note"><b>Pohotovosť</b> — najprv zavolajte na <a class="num" href="tel:+421907695996">0907 695 996</a>.</p>
-        <p class="src">Hodiny podľa Facebook stránky ambulancie, október 2026.</p>
-      </aside>
-    </div>
-  </section>
-
-  <section class="band" aria-label="Hodnotenie a poloha">
-    <div class="wrap">
-      <div class="cell">
-        <p class="big num">4,9<small>z 5</small></p>
-        <p>Hodnotenie na Googli · 65 recenzií</p>
-      </div>
-      <div class="cell">
-        <p class="big num">100 %</p>
-        <p>Odporúča na Facebooku · 33 hodnotení</p>
-      </div>
-      <div class="cell">
-        <p class="big">Pri stanici</p>
-        <p>Železničná aj autobusová stanica v Topoľčanoch</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec" id="oznamy" aria-labelledby="oznamy-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Oznamy</p>
-        <h2 id="oznamy-h">Zmeny ordinačných hodín</h2>
-      </div>
-      <div class="sec-body memo">
-        <span class="pill">Ukážka návrhu</span>
-        <h3>Tu sa zobrazí aktuálny oznam ambulancie</h3>
-        <p>Napríklad skrátené ordinačné hodiny v konkrétny deň alebo dovolenka. Oznam uvidí každý, kto ambulanciu nájde na Googli — nielen sledovatelia na Facebooku.</p>
-        <p>Do zverejnenia oznamu tu platia bežné ordinačné hodiny.</p>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec care" id="starostlivost" aria-labelledby="care-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Starostlivosť</p>
-        <h2 id="care-h">S čím môžete prísť</h2>
-        <p class="aside">Ukážka návrhu — všeobecné kategórie. Presný zoznam služieb a cenník doplní ambulancia.</p>
-      </div>
-      <div class="sec-body list">
-        <div class="item">
-          <h3>Preventívna prehliadka</h3>
-          <p>Pravidelná kontrola zdravotného stavu vášho zvieraťa.</p>
-        </div>
-        <div class="item">
-          <h3>Očkovanie</h3>
-          <p>Termín očkovania si dohodnete vopred telefonicky.</p>
-        </div>
-        <div class="item">
-          <h3>Vyšetrenie a liečba</h3>
-          <p>Keď je zviera choré, zranené alebo sa správa inak než zvyčajne.</p>
-        </div>
-        <div class="item">
-          <h3>Pohotovosť</h3>
-          <p>Mimo bežných hodín najprv zavolajte na <a class="num ul" href="tel:+421907695996">0907 695 996</a>.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="sec contact" id="kontakt" aria-labelledby="kontakt-h">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="label">Kontakt</p>
-        <h2 id="kontakt-h">Ako nás nájdete</h2>
-      </div>
-      <div class="sec-body contact-grid">
+<main>
+  <section class="hero" id="uvod">
+    <div class="kontajner">
+      <div class="hero__hlava">
         <div>
-          <p class="label">Adresa</p>
-          <p class="addr">M. Rázusa 4864/2<br>955 01 Topoľčany</p>
-          <p class="muted">Pri železničnej a autobusovej stanici.</p>
-          <div class="actions">
-            <a class="btn btn-s" href="https://www.google.com/maps/search/Veterin%C3%A1rna+ambulancia+Havran+Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener">Zistiť cestu</a>
+          <p class="nadtitulok"><span class="okna" aria-hidden="true"></span>Pri železničnej a autobusovej stanici</p>
+          <h1>Veterinárna ambulancia <span class="akc">v&nbsp;Topoľčanoch</span></h1>
+        </div>
+        <div class="hero__doplnok">
+          <p class="hero__perex">Ordinujeme v pracovné dni dopoludnia aj popoludní. Termín vyšetrenia si dohodnete telefonicky.</p>
+          <div class="hero__akcie">
+            <a class="tl tl--hlavne" href="tel:+421907695996"><svg class="ik"><use href="#i-tel"/></svg>Zavolať a dohodnúť termín</a>
+            <a class="tl tl--obrys" href="https://www.google.com/maps/search/?api=1&amp;query=Veterin%C3%A1rna%20ambulancia%20MVDr.%20Michal%20Havran%2C%20M.%20R%C3%A1zusa%204864%2F2%2C%20Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener"><svg class="ik"><use href="#i-pin"/></svg>Zistiť cestu</a>
+          </div>
+          <div class="hodnotenie">
+            <div><span class="hviezdy" aria-hidden="true"><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg><svg><use href="#i-hv"/></svg></span><span><b class="cislo">4,9 / 5</b> · <span class="cislo">65</span> hodnotení na Google</span></div>
+            <div><span><b class="cislo">100 %</b> odporúča · <span class="cislo">33</span> hodnotení na Facebooku</span></div>
           </div>
         </div>
-        <div>
-          <p class="label">Telefón</p>
-          <a class="phone num" href="tel:+421907695996">0907 695 996</a>
-          <p class="mini num"><span id="todayLabel"></span></p>
-          <p class="muted">Oznamy o zmenách hodín ambulancia zverejňuje aj na Facebooku.</p>
-          <div class="actions">
-            <a class="btn btn-s" href="https://www.facebook.com/p/Veterin%C3%A1rna-ambulancia-MVDrMichal-Havran-100042245058767/" target="_blank" rel="noopener">Navštíviť Facebook</a>
+      </div>
+
+      <div class="dnes tmava" id="dnes" aria-label="Dnes v ambulancii">
+        <div class="dnes__hlavny">
+          <p class="dnes__stitok" data-datum>Dnes</p>
+          <p class="dnes__stav stav" data-stav-bodka><span class="bodka"></span><span data-stav-kratky>Ordinačné hodiny</span></p>
+          <p class="dnes__pod" data-stav-pod>Po–Pi 9<span class="dv">:</span>00–12<span class="dv">:</span>00 a 15<span class="dv">:</span>00–18<span class="dv">:</span>00</p>
+        </div>
+        <div class="os" aria-hidden="true">
+          <div class="os__drahy"><span class="os__okno os__okno--1"></span><span class="os__okno os__okno--2"></span><span class="os__volno">dnes bez ordinačných hodín</span></div>
+          <div class="os__popis cislo"><span style="left:9.09%">9<span class="dv">:</span>00</span><span style="left:36.36%">12<span class="dv">:</span>00</span><span style="left:63.64%">15<span class="dv">:</span>00</span><span style="left:90.91%">18<span class="dv">:</span>00</span></div>
+          <span class="os__teraz" data-teraz></span>
+        </div>
+        <div class="dnes__pohot">
+          <p>Pohotovosť: najprv zavolajte</p>
+          <a class="dnes__tel cislo" href="tel:+421907695996">0907 695 996</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="sekcia sekcia--plocha hodiny" id="hodiny" aria-labelledby="hodiny-h">
+    <div class="kontajner mriezka">
+      <div class="hodiny__text">
+        <p class="nadtitulok"><span class="okna" aria-hidden="true"></span>Ordinačné hodiny</p>
+        <h2 id="hodiny-h">Ordinujeme dopoludnia <span class="akc">aj popoludní</span></h2>
+        <p>Každý pracovný deň dve ordinačné okná, rovnaké od pondelka do piatku. Termín vyšetrenia si dohodnete telefonicky.</p>
+        <div class="oznam" role="note">
+          <p class="oznam__hlava"><span class="okna" aria-hidden="true"></span>Oznam<span class="oznam__ukazka">ukážka návrhu</span></p>
+          <p>Tu ambulancia zverejní zmenu ordinačných hodín, napríklad skrátený deň alebo dovolenku, aby ju videl každý, nielen sledovatelia na Facebooku. Teraz platia bežné ordinačné hodiny.</p>
+          <a class="odkaz" href="https://www.facebook.com/p/Veterin%C3%A1rna-ambulancia-MVDrMichal-Havran-100042245058767/" target="_blank" rel="noopener">Oznamy na Facebooku<svg class="ik"><use href="#i-von"/></svg></a>
+        </div>
+      </div>
+      <div class="okna-blok" aria-label="Ordinačné hodiny v pondelok až piatok">
+        <div class="okno" data-okno="0"><p class="okno__popis">Dopoludnia · Po–Pi<span class="okno__znak" data-znak></span></p><p class="okno__cas cislo">9<span class="dv">:</span>00–12<span class="dv">:</span>00</p></div>
+        <p class="prestavka"><span><span class="cislo">12<span class="dv">:</span>00–15<span class="dv">:</span>00</span> prestávka</span></p>
+        <div class="okno" data-okno="1"><p class="okno__popis">Popoludní · Po–Pi<span class="okno__znak" data-znak></span></p><p class="okno__cas cislo">15<span class="dv">:</span>00–18<span class="dv">:</span>00</p></div>
+        <div class="mimo" data-vikend><p><b>Sobota a nedeľa</b><span class="mimo__dnes">dnes</span><br>bez ordinačných hodín</p><p><b>Pohotovosť</b><br>najprv zavolajte na <a class="cislo" href="tel:+421907695996">0907 695 996</a></p></div>
+        <p class="zdroj">Hodiny podľa Facebooku ambulancie, október 2026.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="sekcia" id="starostlivost" aria-labelledby="starost-h">
+    <div class="kontajner mriezka">
+      <div class="starost__text">
+        <p class="nadtitulok"><span class="okna" aria-hidden="true"></span>Starostlivosť</p>
+        <h2 id="starost-h">S čím môžete <span class="akc">prísť</span></h2>
+        <p>Keď si nie ste istí, či je návšteva potrebná, zavolajte a opýtajte sa. Termín sa dohaduje telefonicky.</p>
+        <p class="ukazka">Ukážka návrhu: všeobecné kategórie, presný zoznam služieb a cenník doplní ambulancia</p>
+      </div>
+      <div class="starost__mriezka">
+        <article class="pk pk--hlavna">
+          <div><h3>Pohotovosť</h3><p style="margin-top:8px">Mimo ordinačných hodín najprv zavolajte.</p></div>
+          <div><a class="pk__tel cislo" href="tel:+421907695996">0907 695 996</a><a class="tl tl--tmave" href="tel:+421907695996"><svg class="ik"><use href="#i-tel"/></svg>Zavolať</a></div>
+        </article>
+        <article class="pk"><h3>Preventívna prehliadka</h3><p>Pravidelná kontrola zdravotného stavu vášho zvieraťa.</p></article>
+        <article class="pk"><h3>Očkovanie</h3><p>Termín očkovania si dohodnete vopred telefonicky.</p></article>
+        <article class="pk"><h3>Vyšetrenie a liečba</h3><p>Keď je zviera choré, zranené alebo sa správa inak než zvyčajne.</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section class="sekcia kontakt" id="kontakt" aria-labelledby="kontakt-h">
+    <div class="kontajner">
+      <div class="kblok">
+        <div class="kblok__lavy">
+          <p class="nadtitulok"><span class="okna" aria-hidden="true"></span>Kontakt</p>
+          <h2 id="kontakt-h">Ako nás <span class="akc">nájdete</span></h2>
+          <p class="kblok__adresa">M. Rázusa 4864/2<br><span class="cislo">955 01</span> Topoľčany</p>
+          <p class="kblok__poloha">Pri železničnej a autobusovej stanici.</p>
+          <div class="kblok__akcie">
+            <a class="tl tl--hlavne" href="https://www.google.com/maps/search/?api=1&amp;query=Veterin%C3%A1rna%20ambulancia%20MVDr.%20Michal%20Havran%2C%20M.%20R%C3%A1zusa%204864%2F2%2C%20Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener"><svg class="ik"><use href="#i-pin"/></svg>Zistiť cestu</a>
+            <a class="tl tl--obrys" href="https://www.facebook.com/p/Veterin%C3%A1rna-ambulancia-MVDrMichal-Havran-100042245058767/" target="_blank" rel="noopener">Navštíviť Facebook<svg class="ik"><use href="#i-von"/></svg></a>
           </div>
+        </div>
+        <div class="tel-karta">
+          <small>Telefón do ambulancie</small>
+          <a class="cislo" href="tel:+421907695996">0907 695 996</a>
+          <p class="stav" data-stav-bodka style="margin-top:8px;font-size:15px;white-space:normal"><span class="bodka"></span><span data-stav-veta>Po–Pi 9<span class="dv">:</span>00–12<span class="dv">:</span>00 a 15<span class="dv">:</span>00–18<span class="dv">:</span>00</span></p>
+          <a class="tl tl--hlavne" href="tel:+421907695996"><svg class="ik"><use href="#i-tel"/></svg>Zavolať do ambulancie</a>
+          <ul class="cislo">
+            <li><span>Dopoludnia</span><span>Po–Pi 9<span class="dv">:</span>00–12<span class="dv">:</span>00</span></li>
+            <li><span>Popoludní</span><span>Po–Pi 15<span class="dv">:</span>00–18<span class="dv">:</span>00</span></li>
+          </ul>
         </div>
       </div>
     </div>
   </section>
 </main>
 
-<footer class="foot">
-  <div class="wrap">
-    <div>
-      <strong>Veterinárna ambulancia MVDr. Michal Havran</strong>
-      M. Rázusa 4864/2, 955 01 Topoľčany · <a class="num ul" href="tel:+421907695996">0907 695 996</a><br>
-      <span class="num">Po–Pi 9:00–12:00 a 15:00–18:00</span>
+<footer class="paticka">
+  <div class="kontajner" style="position:relative">
+    <div class="paticka__horny">
+      <div class="paticka__znacka">
+        <a class="znacka" href="#uvod"><span class="okna" aria-hidden="true"></span><span><b>Veterinárna ambulancia</b><small>MVDr. Michal Havran · Topoľčany</small></span></a>
+      </div>
+      <div class="paticka__stlpce">
+        <div><h3>Adresa</h3><ul><li>M. Rázusa 4864/2</li><li><span class="cislo">955 01</span> Topoľčany</li><li>pri železničnej a autobusovej stanici</li></ul></div>
+        <div><h3>Ordinačné hodiny</h3><ul class="cislo"><li>Po–Pi 9<span class="dv">:</span>00–12<span class="dv">:</span>00</li><li>Po–Pi 15<span class="dv">:</span>00–18<span class="dv">:</span>00</li><li>pohotovosť: najprv zavolajte</li></ul></div>
+        <div><h3>Kontakt</h3><ul><li><a class="cislo" href="tel:+421907695996">0907 695 996</a></li><li><a href="https://www.facebook.com/p/Veterin%C3%A1rna-ambulancia-MVDrMichal-Havran-100042245058767/" target="_blank" rel="noopener">Facebook</a></li><li><a href="https://www.google.com/maps/search/?api=1&amp;query=Veterin%C3%A1rna%20ambulancia%20MVDr.%20Michal%20Havran%2C%20M.%20R%C3%A1zusa%204864%2F2%2C%20Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener">Google Mapy</a></li></ul></div>
+      </div>
     </div>
-    <p class="made">Neoficiálny návrh webu · Darwon · 2026</p>
+    <div class="paticka__spodok"><span>Neoficiálny návrh webu · Darwon · 2026</span><span>Veterinárna ambulancia MVDr. Michal Havran · M. Rázusa 4864/2, Topoľčany</span></div>
   </div>
 </footer>
 
-<nav class="mbar" aria-label="Rýchle akcie">
-  <a class="btn btn-p" href="tel:+421907695996">Zavolať</a>
-  <a class="btn btn-s" href="https://www.google.com/maps/search/Veterin%C3%A1rna+ambulancia+Havran+Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener">Zistiť cestu</a>
+<nav class="lista" aria-label="Rýchle akcie">
+  <a class="tl tl--hlavne" href="tel:+421907695996"><svg class="ik"><use href="#i-tel"/></svg>Zavolať</a>
+  <a class="tl tl--obrys" href="https://www.google.com/maps/search/?api=1&amp;query=Veterin%C3%A1rna%20ambulancia%20MVDr.%20Michal%20Havran%2C%20M.%20R%C3%A1zusa%204864%2F2%2C%20Topo%C4%BE%C4%8Dany" target="_blank" rel="noopener"><svg class="ik"><use href="#i-pin"/></svg>Zistiť cestu</a>
 </nav>
 
 <script>
 (function(){
-  "use strict";
-  var HOURS = {1:[[540,720],[900,1080]],2:[[540,720],[900,1080]],3:[[540,720],[900,1080]],4:[[540,720],[900,1080]],5:[[540,720],[900,1080]]};
-  var NOTES = {};
-  var W = {open:"Teraz ordinujeme", closing:"Ordinujeme do", closed:"Zatvorené", next:"ordinujeme"};
-
-  var ACC = ["v nedeľu","v pondelok","v utorok","v stredu","vo štvrtok","v piatok","v sobotu"];
-  function now(){
-    try{
-      var p = new Intl.DateTimeFormat("en-GB",{timeZone:"Europe/Bratislava",weekday:"short",hour:"2-digit",minute:"2-digit",hour12:false}).formatToParts(new Date());
-      var m = {}; p.forEach(function(x){ m[x.type] = x.value; });
-      return { day:{Sun:0,Mon:1,Tue:2,Wed:3,Thu:4,Fri:5,Sat:6}[m.weekday], mins:(parseInt(m.hour,10)%24)*60 + parseInt(m.minute,10) };
-    }catch(err){ var d = new Date(); return { day:d.getDay(), mins:d.getHours()*60 + d.getMinutes() }; }
+  /* ordinačné hodiny podľa FB intro (BRIEF): minúty od polnoci, 0 = nedeľa */
+  var W=[[540,720],[900,1080]],H={0:[],1:W,2:W,3:W,4:W,5:W,6:[]};
+  var KDE=['v nedeľu','v pondelok','v utorok','v stredu','vo štvrtok','v piatok','v sobotu'];
+  var DEN=['nedeľa','pondelok','utorok','streda','štvrtok','piatok','sobota'];
+  function cas(m){return Math.floor(m/60)+':'+('0'+m%60).slice(-2)}
+  var p={};
+  try{new Intl.DateTimeFormat('en-GB',{timeZone:'Europe/Bratislava',weekday:'short',hour:'2-digit',minute:'2-digit',day:'numeric',month:'numeric',hourCycle:'h23'}).formatToParts(new Date()).forEach(function(x){p[x.type]=x.value})}catch(e){return}
+  var d=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'].indexOf(p.weekday),m=(+p.hour%24)*60+(+p.minute);
+  if(d<0)return;
+  var dnes=H[d],otv=false,kr,veta,pod,i;
+  for(i=0;i<dnes.length;i++){if(m>=dnes[i][0]&&m<dnes[i][1]){otv=true;kr='Ordinujeme';veta='Ordinujeme do '+cas(dnes[i][1]);pod='Do '+cas(dnes[i][1])+(dnes[i+1]?', popoludní znova '+cas(dnes[i+1][0])+'–'+cas(dnes[i+1][1])+'.':'.')}}
+  if(!otv){
+    var dalsi=null;for(i=0;i<dnes.length;i++){if(m<dnes[i][0]){dalsi=dnes[i][0];break}}
+    if(dalsi!==null){kr=i>0?'Prestávka':'Zatvorené';veta=(i>0?'Prestávka, ordinujeme od ':'Zatvorené, ordinujeme od ')+cas(dalsi);pod='Ordinujeme od '+cas(dalsi)+'.'}
+    else{for(var k=1;k<8;k++){var n=(d+k)%7;if(H[n].length){kr='Zatvorené';veta='Zatvorené, ordinujeme '+(k===1?'zajtra':KDE[n])+' od '+cas(H[n][0][0]);pod='Ordinujeme '+(k===1?'zajtra':KDE[n])+' od '+cas(H[n][0][0])+'.';break}}}
   }
-  function hm(t){ if(t >= 1440) return "polnoci"; var h = Math.floor(t/60), m = t%60; return h + ":" + (m<10?"0":"") + m; }
-  function status(n){
-    var spans = HOURS[n.day] || [], prev = HOURS[(n.day+6)%7] || [];
-    for(var j=0;j<prev.length;j++){ if(prev[j][1] > 1440 && n.mins < prev[j][1]-1440) return {open:true, end:prev[j][1]-1440}; }
-    for(var i=0;i<spans.length;i++){ if(n.mins >= spans[i][0] && n.mins < spans[i][1]) return {open:true, end:spans[i][1]}; }
-    for(var k=0;k<spans.length;k++){ if(spans[k][0] > n.mins) return {open:false, when:"dnes o " + hm(spans[k][0])}; }
-    for(var d=1; d<=7; d++){ var dd = (n.day+d)%7, s = HOURS[dd]; if(s && s.length) return {open:false, when:(d===1 ? "zajtra" : ACC[dd]) + " o " + hm(s[0][0])}; }
-    return {open:false, when:""};
-  }
-  function render(){
-    var n = now(), dot = document.getElementById("statusDot"), text = document.getElementById("statusText");
-    if(HOURS && dot && text){
-      var st = status(n);
-      if(st.open){
-        var left = st.end - n.mins;
-        if(left <= 60){ dot.className = "is-closing"; text.innerHTML = W.closing + " " + hm(st.end) + " · <b>ešte " + left + " min</b>"; }
-        else { dot.className = "is-open"; text.innerHTML = W.open + " · <b>do " + hm(st.end) + "</b>"; }
-      }else{
-        var note = NOTES[n.day], noted = note && !(HOURS[n.day]||[]).length;
-        dot.className = noted ? "is-note" : "is-closed";
-        text.innerHTML = noted ? "Dnes " + note : W.closed + (st.when ? " · <b>" + W.next + " " + st.when + "</b>" : "");
-      }
-    }
-    var label = document.getElementById("todayLabel");
-    if(HOURS && label && !label.textContent){
-      var s = HOURS[n.day] || [];
-      if(s.length) label.textContent = "Dnes " + s.map(function(x){ return hm(x[0]) + "–" + (x[1] >= 1440 ? "0:00" : hm(x[1])); }).join(" a ");
-      else if(!NOTES[n.day]) label.textContent = "Dnes zatvorené";
-    }
-    [].forEach.call(document.querySelectorAll('[data-day="' + n.day + '"]'), function(r){ r.setAttribute("data-today",""); });
-  }
-  render(); setInterval(render, 60000);
+  document.querySelectorAll('[data-stav-bodka]').forEach(function(e){e.classList.toggle('je-otvorene',otv)});
+  document.querySelectorAll('[data-stav-kratky]').forEach(function(e){e.textContent=kr});
+  document.querySelectorAll('[data-stav-text],[data-stav-veta]').forEach(function(e){e.textContent=veta});
+  document.querySelectorAll('[data-stav-pod]').forEach(function(e){e.textContent=pod});
+  document.querySelectorAll('[data-datum]').forEach(function(e){e.textContent='Dnes · '+DEN[d]+' '+p.day+'. '+p.month+'.'});
+  var dn=document.getElementById('dnes');if(!dnes.length)dn.classList.add('je-zatvorene-den');
+  var t=document.querySelector('[data-teraz]');if(t&&dnes.length&&m>=480&&m<=1140){t.style.left=((m-480)/660*100)+'%';t.style.display='block'}
+  var ok=document.querySelectorAll('[data-okno]'),zn;
+  if(!dnes.length){document.querySelector('[data-vikend]').classList.add('je-dnes')}
+  for(i=0;i<W.length;i++){if(dnes.length&&m>=W[i][0]&&m<W[i][1]){ok[i].classList.add('je-teraz');ok[i].querySelector('[data-znak]').textContent='teraz ordinujeme'}}
+  if(!otv){var j=-1,kd='dnes';if(dnes.length){for(i=0;i<W.length;i++){if(m<W[i][0]){j=i;break}}}
+    if(j<0){j=0;for(k=1;k<8;k++){if(H[(d+k)%7].length){kd=k===1?'zajtra':KDE[(d+k)%7];break}}}
+    ok[j].classList.add('je-dalsie');ok[j].querySelector('[data-znak]').textContent='ďalšie: '+kd}
+})();
+(function(){
+  var h=document.getElementById('hlavicka');
+  addEventListener('scroll',function(){h.classList.toggle('je-prilepena',scrollY>40)},{passive:true});
+  var mp=document.getElementById('mpanel'),b=document.querySelector('.burger');
+  function z(o){mp.classList.toggle('je-otvoreny',o);b.setAttribute('aria-expanded',o)}
+  b.addEventListener('click',function(){z(true)});
+  mp.querySelectorAll('[data-zavriet]').forEach(function(e){e.addEventListener('click',function(){z(false)})});
+  addEventListener('keydown',function(e){if(e.key==='Escape')z(false)});
 })();
 </script>
+</body>
+</html>
